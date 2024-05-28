@@ -5,3 +5,4 @@ It seems our target's ip address is 192.168.146.174.
 Hence I run a nmap scan to discover open ports and running services.
 ![image](https://github.com/harunsvnc/SickOS1.2/assets/75423540/20678f86-2d61-4a4a-bcb9-053d1b54407e)
  Port 22 and 80 is running on the target. Hence i run a nikto scan to get further data on the web application.
+ 
