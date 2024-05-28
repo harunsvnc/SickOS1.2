@@ -13,4 +13,11 @@ Hence I run a nmap scan to discover open ports and running services.
  It seems this is an directory indexing folder.
  to make sure about the finding I run burp and sent an HTTP OPTIONS request to target.
  ![image](https://github.com/harunsvnc/SickOS1.2/assets/75423540/dd0b1e3e-dda6-46c7-960d-a0d9d0ce9b6d)
-That's correct, and server respond us with supported functions. HTTP PUT is allowd on the target
+ 
+That's correct, and server respond us with supported functions. HTTP PUT is allowd on the target.
+ Let's try with curl to upload a newly created file.
+
+![image](https://github.com/harunsvnc/SickOS1.2/assets/75423540/8d628804-48a6-4351-a887-dc82b598e630)
+
+first time curl gave me error after a short google search, I needed to add an Expect header to my command.
+
